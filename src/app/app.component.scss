@@ -25,6 +25,9 @@ vel {
         
     }
     .carta {
+        position: absolute;
+        left: 1000px;
+        top: 100px;
         width:63mm;
         height: 88mm;
         .base {
@@ -117,8 +120,8 @@ vel {
         .textocarta{
                 position: absolute;
                 background-color: white;
-                left: 785px;
-                top: 220.5px;
+                left: 17px;
+                top: 220.8px;
                 width: 204px;
                 height: 96px;
                 border-radius: 2px;
