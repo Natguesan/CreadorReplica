@@ -49,6 +49,10 @@ vel {
                 font-size: small;
                 text-align: center;
                 padding-left: 5px;
+                -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+                color: white !important;
+                font-weight:1000;
+
                 
             }
             .tipocarta {
@@ -71,7 +75,7 @@ vel {
             }
             .yalmir {
                 background-color: $yalmir;
-                color: white;
+                color: black;
             }
             .fenrir {
                 background-color: $fenrir;
@@ -79,7 +83,7 @@ vel {
             }
             .rutghar {
                 background-color: $rutghar;
-                color: white;
+                color: black;
             }
             .mercenario {
                 background-color: $mercenario;
@@ -87,7 +91,7 @@ vel {
             }
             .borcloyyalmir {
                 background-image: linear-gradient(to right, $borcloy , $yalmir);
-                color: white;
+                color: black;
             }
             .borcloyfenrir{
                 background-image: linear-gradient(to right, $borcloy , $fenrir);
@@ -103,11 +107,11 @@ vel {
             }
             .rutgharborcloy{
                 background-image: linear-gradient(to right, $rutghar , $borcloy);
-                color: white
+                color: black
             }
             .rutgharyalmir{
                 background-image: linear-gradient(to right, $rutghar , $yalmir);
-                color: white
+                color: black
             }
             .logo{
                 height: 13px;
@@ -135,6 +139,7 @@ vel {
             margin-right: 5px;
             margin-top: 5px;
             margin-bottom: 35px;
+            color: black
         }
     }
 }
