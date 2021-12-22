@@ -1,12 +1,7 @@
+<div class="contenedorprincipal">
 <div class="contenedor">
 <div class="datos">
-  <form [formGroup]="myForm" >
- 
-  <input hidden #file type="file" accept="image/*" (change)="imagePreview($event)" />
- <button (click)="file.click()" mat-raised-button color="primary">Cargar imagen de fondo</button>
 
-
-  </form>
 
 <div style="color: rgb(247, 244, 240); margin-left: 30px;">Nombre de la carta</div>
 <mat-form-field appearance="fill">
@@ -42,13 +37,17 @@
   <mat-option *ngFor="let subtipo of subtiposdecarta" [value]="subtipo">{{subtipo}}</mat-option>
 </mat-select></mat-form-field>
 </div>
+
+
+</div>
+<div class="textos">
 <div>
 <mat-form-field appearance="fill">
   <mat-label>Texto de la carta</mat-label>
   <textarea [ngModel]="textodeCarta" (ngModelChange)="textoCarta($event)" maxlength="300" rows="7" matInput></textarea>
 </mat-form-field>
 </div>
-<button mat-raised-button color="primary" (click)="generarIMG()">Descargar Carta</button>
+
 </div>
 
 <div class="carta" id="carta">
@@ -113,16 +112,22 @@
           <img  class="logo" src="../assets/imagenes/yalmir.png">
         </div>
       </div> 
-      <div class="textocarta">
+      
+    </div>
+  </div> 
+<div class="textocarta">
           <div id="textoCarta"> </div>
         </div>
     </div>
-  
-  
-  
-  
-  </div> 
-    </div>
 </div>
+
+</div>
+<form [formGroup]="myForm" >
+ 
+  <input hidden #file type="file" accept="image/*" (change)="imagePreview($event)" />
+ <button class="descarga" (click)="file.click()" mat-raised-button color="primary">Cargar imagen de fondo</button>
+
+<button class="descarga" mat-raised-button color="primary" (click)="generarIMG()">Descargar Carta</button>
+  </form>
 
 </div>

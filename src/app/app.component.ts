@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit{
   title = 'creador';
-  fondoimagen: string = "https://www.tcgplayer.it/public/mario/images/CFC-016-U-Itaqweqqsda.jpg";
+  fondoimagen: string = "";
   casa: string = "Fenrir";
   casa2: string = "Ninguna";
   ninguna: string = "Ninguna"

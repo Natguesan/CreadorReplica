@@ -1,34 +1,42 @@
-$yalmir:rgb(165, 28, 48);
-$borcloy:rgb(95, 56, 105);
-$fenrir:rgb(128, 214, 248);
-$rutghar:rgb(44, 52, 118);
+$yalmir: rgb(165, 28, 48);
+$borcloy: rgb(95, 56, 105);
+$fenrir: rgb(128, 214, 248);
+$rutghar: rgb(44, 52, 118);
 $mercenario: rgb(80, 80, 80);
 textarea {
     overflow: scroll;
     resize: none !important;
-    color:white;
+    color: white;
+    
 }
-vel {
-    background-image: url(../assets/imagenes/sneaker-305322_1280.png);
-    background-size: 20px;
-    padding: 2px 10px;
-    background-repeat: no-repeat;
-    margin-left: 5px;
-}
-.fly {
-    color:red;
+.contenedorprincipal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+   form{
+       display: flex;
+       justify-content: space-evenly;
+   }
+
+    .descarga{
+        width: 20%;
+        align-self: center;
+    }
 }
 .contenedor {
     display: flex;
+    align-items: center;
+
+    justify-content: space-evenly;
     .datos {
-        width: 50%;
-        
+        flex-direction: column;
+    }
+    .textos {
+        flex-direction: column;
     }
     .carta {
-        position: absolute;
-        left: 1000px;
-        top: 100px;
-        width:63mm;
+        width: 63mm;
         height: 88mm;
         .base {
             display: flex;
@@ -39,6 +47,7 @@ vel {
             width: 63mm;
             height: 88mm;
             border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.151);
 
             .nombre {
                 margin-top: 15px;
@@ -51,23 +60,18 @@ vel {
                 padding-left: 5px;
                 -webkit-text-stroke: 0.1px rgb(0, 0, 0);
                 color: white !important;
-                font-weight:1000;
-
-                
+                font-weight: 1000;
             }
             .tipocarta {
                 display: flex;
                 justify-content: space-between;
-                margin-top:173px;
+                margin-top: 173px;
                 width: 83.5%;
                 height: 5%;
                 border-radius: 2px;
                 font-size: small;
                 text-align: left;
                 padding-left: 5px;
-                
-
-                
             }
             .borcloy {
                 background-color: $borcloy;
@@ -90,56 +94,55 @@ vel {
                 color: black;
             }
             .borcloyyalmir {
-                background-image: linear-gradient(to right, $borcloy , $yalmir);
+                background-image: linear-gradient(to right, $borcloy, $yalmir);
                 color: black;
             }
-            .borcloyfenrir{
-                background-image: linear-gradient(to right, $borcloy , $fenrir);
+            .borcloyfenrir {
+                background-image: linear-gradient(to right, $borcloy, $fenrir);
                 color: black;
             }
-            .yalmirfenrir{
-                background-image: linear-gradient(to right, $yalmir , $fenrir);
-                color: black
+            .yalmirfenrir {
+                background-image: linear-gradient(to right, $yalmir, $fenrir);
+                color: black;
             }
-            .fenrirrutghar{
-                background-image: linear-gradient(to right, $fenrir , $rutghar);
-                color: black
+            .fenrirrutghar {
+                background-image: linear-gradient(to right, $fenrir, $rutghar);
+                color: black;
             }
-            .rutgharborcloy{
-                background-image: linear-gradient(to right, $rutghar , $borcloy);
-                color: black
+            .rutgharborcloy {
+                background-image: linear-gradient(to right, $rutghar, $borcloy);
+                color: black;
             }
-            .rutgharyalmir{
-                background-image: linear-gradient(to right, $rutghar , $yalmir);
-                color: black
+            .rutgharyalmir {
+                background-image: linear-gradient(to right, $rutghar, $yalmir);
+                color: black;
             }
-            .logo{
+            .logo {
                 height: 13px;
                 width: 13px;
                 margin-top: 1px;
                 margin-right: 4px;
             }
-               
         }
-        .textocarta{
-                position: absolute;
-                background-color: white;
-                left: 17px;
-                top: 220.8px;
-                width: 204px;
-                height: 96px;
-                border-radius: 2px;
-                opacity: 80%;
-                Word-wrap: break-Word;
+        .textocarta {
+            background-color: white;
+            width: 85.5%;
+            height: 96px;
+            border-radius: 2px;
+            opacity: 80%;
+            margin-top: -0.5px;
+
+            #textoCarta {
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-top: 5px;
+                margin-bottom: 35px;
+                color: black;
+                word-wrap: break-Word;
                 font-size: 9px;
                 line-height: 11px;
-        }
-        #textoCarta {
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-top: 5px;
-            margin-bottom: 35px;
-            color: black
+                white-space: pre;
+            }
         }
     }
 }
