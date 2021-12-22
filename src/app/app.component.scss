@@ -1,8 +1,8 @@
-$yalmir: rgb(165, 28, 48);
-$borcloy: rgb(95, 56, 105);
-$fenrir: rgb(128, 214, 248);
-$rutghar: rgb(44, 52, 118);
-$mercenario: rgb(80, 80, 80);
+$yalmir: rgba(165, 28, 49, 0.851);
+$borcloy: rgba(95, 56, 105, 0.851);
+$fenrir: rgba(128, 214, 248, 0.851);
+$rutghar: rgba(44, 51, 118, 0.851);
+$mercenario: rgba(80, 80, 80, 0.851);
 textarea {
     overflow: scroll;
     resize: none !important;
@@ -125,23 +125,43 @@ textarea {
             }
         }
         .textocarta {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.692);
             width: 85.5%;
             height: 96px;
             border-radius: 2px;
-            opacity: 80%;
-            margin-top: -0.5px;
+            margin-top: -0.5px;                
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             #textoCarta {
-                margin-left: 5px;
-                margin-right: 5px;
-                margin-top: 5px;
-                margin-bottom: 35px;
+                padding: 5px;
+                height:85% !important;
                 color: black;
-                word-wrap: break-Word;
+                word-wrap: break-Word !important;
                 font-size: 9px;
                 line-height: 11px;
-                white-space: pre;
+                white-space: pre-wrap;
+                display: inline-block;
+                overflow: hidden;
+
+            }
+            #descripcionCarta {
+                overflow: hidden;
+                justify-self: flex-end;
+                height:18%;
+                margin-left: 20px;
+                margin-right: 20px;
+                padding-bottom: 10px;
+                font-size: 7px;
+                line-height: 8px;
+                color: black;
+                font-style: italic;
+                text-align: center;
+                display: inline-block;
+                white-space: pre-wrap;
+                word-wrap: break-word !important;               
             }
         }
     }

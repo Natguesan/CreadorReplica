@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
   filePath: string = "";
   myForm: FormGroup;
   textodeCarta: string = "" ; 
+  descripciondeCarta : string = "";
   constructor(public fb: FormBuilder) {
     this.myForm = this.fb.group({
       img: [null],
