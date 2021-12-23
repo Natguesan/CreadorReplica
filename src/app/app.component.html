@@ -37,6 +37,21 @@
   <mat-option *ngFor="let subtipo of subtiposdecarta" [value]="subtipo">{{subtipo}}</mat-option>
 </mat-select></mat-form-field>
 </div>
+<div *ngIf="tipodecarta === 'Contendiente'"style="color: rgb(247, 244, 240); margin-left: 30px;">Ataque y defensa</div>
+<div *ngIf="tipodecarta === 'Contendiente'">
+  <mat-form-field appearance="fill">
+    <mat-label>Ataque</mat-label>
+<mat-select type="text"  [(ngModel)]="ataque">
+  <mat-option value="X" selected>X</mat-option>
+  <mat-option *ngFor="let atq of ataques" [value]="atq">{{atq}}</mat-option>
+</mat-select></mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Subtipo</mat-label>
+<mat-select type="text"  [(ngModel)]="defensa">
+<mat-option value="X" selected>X</mat-option>
+  <mat-option *ngFor="let def of defensas" [value]="def">{{def}}</mat-option>
+</mat-select></mat-form-field>
+</div>
 
 
 </div>
@@ -69,7 +84,7 @@
       'fenrirrutghar' : casa === 'Fenrir' && casa2 === 'Rutghar' || casa === 'Rutghar' && casa2 === 'Fenrir',
       'rutgharborcloy' : casa === 'Rutghar'&& casa2 === 'Borcloy' || casa === 'Borcloy' && casa2 === 'Rutghar', 
       'rutgharyalmir' : casa === 'Rutghar'&& casa2 === 'Yalmir' || casa === 'Yalmir' && casa2 === 'Rutghar'
-    }" class="nombre">{{nombrecarta}}</div> 
+    }" class="nombre"><p>{{nombrecarta}}</p></div> 
     <div [ngClass]="{
       'borcloy': casa === 'Borcloy' && casa2 === 'Ninguna', 
       'yalmir' : casa === 'Yalmir' && casa2 === 'Ninguna', 
@@ -123,7 +138,12 @@
 <div class="textocarta">
           <div id="textoCarta"> </div>
           <div *ngIf="descripciondeCarta !=='' " id="descripcionCarta">{{descripciondeCarta}}</div>
+         </div>
+        <div *ngIf="tipodecarta === 'Contendiente'" class="cajaestadisticas">
+          <div class="estadisticas">
+          {{ataque}}/{{defensa}}
         </div>
+        </div>  
     </div>
 </div>
 

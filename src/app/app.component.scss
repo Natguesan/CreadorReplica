@@ -7,19 +7,18 @@ textarea {
     overflow: scroll;
     resize: none !important;
     color: white;
-    
 }
 .contenedorprincipal {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-   form{
-       display: flex;
-       justify-content: space-evenly;
-   }
+    form {
+        display: flex;
+        justify-content: space-evenly;
+    }
 
-    .descarga{
+    .descarga {
         width: 20%;
         align-self: center;
     }
@@ -53,14 +52,20 @@ textarea {
                 margin-top: 15px;
                 margin-left: 34px;
                 width: 73%;
-                height: 5%;
+                height: 6%;
                 border-radius: 2px;
                 font-size: small;
-                text-align: center;
-                padding-left: 5px;
-                -webkit-text-stroke: 0.1px rgb(0, 0, 0);
-                color: white !important;
-                font-weight: 1000;
+
+                p {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    padding-left: 5px;
+                    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+                    color: white !important;
+                    font-weight: 1000;
+                }
             }
             .tipocarta {
                 display: flex;
@@ -129,15 +134,17 @@ textarea {
             width: 85.5%;
             height: 96px;
             border-radius: 2px;
-            margin-top: -0.5px;                
+            margin-top: -0.5px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            z-index: 1;
 
             #textoCarta {
                 padding: 5px;
-                height:85% !important;
+                height: 85% !important;
                 color: black;
                 word-wrap: break-Word !important;
                 font-size: 9px;
@@ -145,12 +152,11 @@ textarea {
                 white-space: pre-wrap;
                 display: inline-block;
                 overflow: hidden;
-
             }
             #descripcionCarta {
                 overflow: hidden;
                 justify-self: flex-end;
-                height:18%;
+                height: 18%;
                 margin-left: 20px;
                 margin-right: 20px;
                 padding-bottom: 10px;
@@ -161,7 +167,31 @@ textarea {
                 text-align: center;
                 display: inline-block;
                 white-space: pre-wrap;
-                word-wrap: break-word !important;               
+                word-wrap: break-word !important;
+            }
+        }
+        .cajaestadisticas {
+            height: 18px;
+            width: 45px;
+            background-color: rgb(179, 179, 179);
+            position: relative;
+            left: 85px;
+            top: -10px;
+            border-radius: 10px;
+            z-index: 2;
+            border: rgb(114, 114, 114) 2px solid;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            .estadisticas {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                border-radius: 10px;
+                justify-content: center;
+                align-items: center;
+                color: black;
+                font-weight: 460;
             }
         }
     }

@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit{
   title = 'creador';
   fondoimagen: string = "";
-  casa: string = "Fenrir";
+  casa: string = "Borcloy";
   casa2: string = "Ninguna";
   ninguna: string = "Ninguna"
   mercenario: string = "Mercenario"
@@ -26,6 +26,10 @@ export class AppComponent implements OnInit{
   myForm: FormGroup;
   textodeCarta: string = "" ; 
   descripciondeCarta : string = "";
+  ataque : string = "X";
+  defensa : string = "X";
+  ataques : Array<number> = [0,1,2,3,4,5,6,7,8,9,10]
+  defensas : Array<number> = [1,2,3,4,5,6,7,8,9,10]
   constructor(public fb: FormBuilder) {
     this.myForm = this.fb.group({
       img: [null],
