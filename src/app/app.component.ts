@@ -28,8 +28,17 @@ export class AppComponent implements OnInit{
   descripciondeCarta : string = "";
   ataque : string = "X";
   defensa : string = "X";
-  ataques : Array<number> = [0,1,2,3,4,5,6,7,8,9,10]
-  defensas : Array<number> = [1,2,3,4,5,6,7,8,9,10]
+  ataques : Array<number> = [0,1,2,3,4,5,6,7,8,9,10];
+  defensas : Array<number> = [1,2,3,4,5,6,7,8,9,10];
+  rareza : string = "Común";
+  rarezas : Array<string> = ["Común","Rara","Épica","Legendaria"];
+  costeprincipal : number = 0;
+  costesecundario : number = 0;
+  costeneutro : string = "0";
+  costecasaprincipal : Array<number> = [0,1,2,3,4];
+  costecasasecundaria : Array<number> = [0,1,2,3];
+  costesneutro : Array<number> = [0,1,2,3,4,5,6,7,8,9];
+
   constructor(public fb: FormBuilder) {
     this.myForm = this.fb.group({
       img: [null],
@@ -81,7 +90,9 @@ export class AppComponent implements OnInit{
   generarIMG(): void {
     const DATA = document.getElementById('carta')
     const options = {
-      allowTaint: false
+      allowTaint: false,
+      width: 238,
+      height:332.59
     };
     html2canvas(DATA!,options).then(canvas => {
       this.imagencreada = canvas.toDataURL(); 

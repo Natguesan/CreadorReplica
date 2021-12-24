@@ -1,159 +1,470 @@
 <div class="contenedorprincipal">
-<div class="contenedor">
-<div class="datos">
-
-
-<div style="color: rgb(247, 244, 240); margin-left: 30px;">Nombre de la carta</div>
-<mat-form-field appearance="fill">
-  <mat-label>Nombre</mat-label>
-<input matInput type="text" maxlength="24" [ngModel]="nombrecarta" (ngModelChange)="nombrecarta = $event" style="color:white">
-</mat-form-field>
-<div style="color: rgb(247, 244, 240); margin-left: 30px;">Casa de la carta</div>
-<mat-form-field appearance="fill">
-  <mat-label>Casa principal</mat-label>
-<mat-select type="text" [ngModel]="casa" (ngModelChange)="comprobarCasa($event)">
-  <mat-option *ngFor="let casa of casas" [value]="casa">{{casa}}</mat-option>
-  <mat-option [value]="mercenario">{{mercenario}}</mat-option>
-</mat-select>
-</mat-form-field>
-<mat-form-field *ngIf="casa !=mercenario" appearance="fill">
-  <mat-label>Casa secundaria</mat-label>
-<mat-select type="text"  [(ngModel)]="casa2" [disabled]="casa === '' || casa === 'Mercenario' ">
-  <mat-option [value]="ninguna" selected>{{ninguna}}</mat-option>
-  <mat-option *ngFor="let casa2 of casas" [value]="casa2" [disabled]="casa === casa2 ">{{casa2}}</mat-option>
-</mat-select>
-</mat-form-field>
-<div style="color: rgb(247, 244, 240); margin-left: 30px;">Tipo de carta</div>
-<div>
-  <mat-form-field appearance="fill">
-    <mat-label>Tipo</mat-label>
-<mat-select type="text"  [(ngModel)]="tipodecarta">
-  <mat-option *ngFor="let tipo of tiposdecarta" [value]="tipo">{{tipo}}</mat-option>
-</mat-select></mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Subtipo</mat-label>
-<mat-select type="text"  [(ngModel)]="subtipodecarta" [disabled]="tipodecarta === '' || tipodecarta === tiposdecarta[1]"
-[hidden]="tipodecarta === '' || tipodecarta === tiposdecarta[1]">
-  <mat-option *ngFor="let subtipo of subtiposdecarta" [value]="subtipo">{{subtipo}}</mat-option>
-</mat-select></mat-form-field>
-</div>
-<div *ngIf="tipodecarta === 'Contendiente'"style="color: rgb(247, 244, 240); margin-left: 30px;">Ataque y defensa</div>
-<div *ngIf="tipodecarta === 'Contendiente'">
-  <mat-form-field appearance="fill">
-    <mat-label>Ataque</mat-label>
-<mat-select type="text"  [(ngModel)]="ataque">
-  <mat-option value="X" selected>X</mat-option>
-  <mat-option *ngFor="let atq of ataques" [value]="atq">{{atq}}</mat-option>
-</mat-select></mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Subtipo</mat-label>
-<mat-select type="text"  [(ngModel)]="defensa">
-<mat-option value="X" selected>X</mat-option>
-  <mat-option *ngFor="let def of defensas" [value]="def">{{def}}</mat-option>
-</mat-select></mat-form-field>
-</div>
-
-
-</div>
-<div class="textos">
-<div class="1">
-<mat-form-field appearance="fill">
-  <mat-label>Texto de la carta</mat-label>
-  <textarea matInput [ngModel]="textodeCarta" (ngModelChange)="textoCarta($event)" maxlength="300" rows="7" cols="50" ></textarea>
-</mat-form-field></div>
-<div class="2">
-<mat-form-field appearance="fill">
-  <mat-label>Ambientación (Opcional)</mat-label>
-  <textarea matInput [(ngModel)]="descripciondeCarta"  maxlength="80" rows="2" cols="50" ></textarea>
-</mat-form-field>
-</div>
-
-</div>
-
-<div class="carta" id="carta">
-  <div class="base" style="background-image: url({{fondoimagen}})">
-    <div [ngClass]="{
-      'borcloy': casa === 'Borcloy' && casa2 === 'Ninguna', 
-      'yalmir' : casa === 'Yalmir' && casa2 === 'Ninguna', 
-      'fenrir' : casa === 'Fenrir' && casa2 === 'Ninguna', 
-      'rutghar' : casa === 'Rutghar' && casa2 === 'Ninguna',
-      'mercenario' : casa === 'Mercenario',
-      'borcloyyalmir': casa === 'Borcloy' && casa2 === 'Yalmir' || casa ==='Yalmir' && casa2 === 'Borcloy',
-      'borcloyfenrir': casa === 'Borcloy' && casa2 === 'Fenrir' || casa ==='Fenrir' && casa2 === 'Borcloy',
-      'yalmirfenrir' : casa === 'Yalmir' && casa2 === 'Fenrir' || casa === 'Fenrir' && casa2 === 'Yalmir',
-      'fenrirrutghar' : casa === 'Fenrir' && casa2 === 'Rutghar' || casa === 'Rutghar' && casa2 === 'Fenrir',
-      'rutgharborcloy' : casa === 'Rutghar'&& casa2 === 'Borcloy' || casa === 'Borcloy' && casa2 === 'Rutghar', 
-      'rutgharyalmir' : casa === 'Rutghar'&& casa2 === 'Yalmir' || casa === 'Yalmir' && casa2 === 'Rutghar'
-    }" class="nombre"><p>{{nombrecarta}}</p></div> 
-    <div [ngClass]="{
-      'borcloy': casa === 'Borcloy' && casa2 === 'Ninguna', 
-      'yalmir' : casa === 'Yalmir' && casa2 === 'Ninguna', 
-      'fenrir' : casa === 'Fenrir' && casa2 === 'Ninguna', 
-      'rutghar' : casa === 'Rutghar' && casa2 === 'Ninguna',
-      'mercenario' : casa === 'Mercenario',
-      'borcloyyalmir': casa === 'Borcloy' && casa2 === 'Yalmir' || casa ==='Yalmir' && casa2 === 'Borcloy',
-      'borcloyfenrir': casa === 'Borcloy' && casa2 === 'Fenrir' || casa ==='Fenrir' && casa2 === 'Borcloy',
-      'yalmirfenrir' : casa === 'Yalmir' && casa2 === 'Fenrir' || casa === 'Fenrir' && casa2 === 'Yalmir',
-      'fenrirrutghar' : casa === 'Fenrir' && casa2 === 'Rutghar' || casa === 'Rutghar' && casa2 === 'Fenrir',
-      'rutgharborcloy' : casa === 'Rutghar'&& casa2 === 'Borcloy' || casa === 'Borcloy' && casa2 === 'Rutghar', 
-      'rutgharyalmir' : casa === 'Rutghar'&& casa2 === 'Yalmir' || casa === 'Yalmir' && casa2 === 'Rutghar'
-    }" class="tipocarta">
-    <h5>{{tipodecarta}} <span *ngIf="tipodecarta === tiposdecarta[0]">: {{subtipodecarta}} </span></h5>
-    <div class="logos">
-      <div *ngIf="casa2 === 'Ninguna'" class="casaprincipal">
-      <img *ngIf="casa === 'Borcloy'" class="logo" src="../assets/imagenes/borcloy.png">
-      <img *ngIf="casa === 'Fenrir'" class="logo" src="../assets/imagenes/fenrir.png">
-      <img *ngIf="casa === 'Rutghar'" class="logo" src="../assets/imagenes/rutghar.png">
-      <img *ngIf="casa === 'Yalmir'" class="logo" src="../assets/imagenes/yalmir.png">
+  <div class="contenedor">
+    <div class="datos">
+      <div style="color: rgb(247, 244, 240); margin-left: 30px">
+        Nombre de la carta
       </div>
-      <div *ngIf="casa2 !='Ninguna'"class="casasecundaria">
-        <div *ngIf="casa === 'Borcloy' && casa2 === 'Yalmir' || casa ==='Yalmir' && casa2 === 'Borcloy'"class="logoborcloyyalmir">
-          <img  class="logo" src="../assets/imagenes/borcloy.png">
-          <img  class="logo" src="../assets/imagenes/yalmir.png">
-        </div>
-        <div *ngIf="casa === 'Borcloy' && casa2 === 'Fenrir' || casa ==='Fenrir' && casa2 === 'Borcloy'"class="logoborcloyfenrir">
-          <img  class="logo" src="../assets/imagenes/borcloy.png">
-          <img  class="logo" src="../assets/imagenes/fenrir.png">
-        </div>
-        <div *ngIf="casa === 'Yalmir' && casa2 === 'Fenrir' || casa === 'Fenrir' && casa2 === 'Yalmir'"class="logoyalmirfenrir">
-          <img  class="logo" src="../assets/imagenes/yalmir.png">
-          <img  class="logo" src="../assets/imagenes/fenrir.png">
-        </div>
-        <div *ngIf="casa === 'Fenrir' && casa2 === 'Rutghar' || casa === 'Rutghar' && casa2 === 'Fenrir'"class="logofenrirrutghar">
-          <img  class="logo" src="../assets/imagenes/fenrir.png">
-          <img  class="logo" src="../assets/imagenes/rutghar.png">
-        </div>
-        <div *ngIf="casa === 'Rutghar'&& casa2 === 'Borcloy' || casa === 'Borcloy' && casa2 === 'Rutghar'"class="logorutgharborcloy">
-          <img  class="logo" src="../assets/imagenes/rutghar.png">
-          <img  class="logo" src="../assets/imagenes/borcloy.png">
-        </div>
-        <div *ngIf="casa === 'Rutghar'&& casa2 === 'Yalmir' || casa === 'Yalmir' && casa2 === 'Rutghar'"class="logorutgharyalmir">
-          <img  class="logo" src="../assets/imagenes/rutghar.png">
-          <img  class="logo" src="../assets/imagenes/yalmir.png">
-        </div>
-      </div> 
-      
-    </div>
-  </div> 
-<div class="textocarta">
-          <div id="textoCarta"> </div>
-          <div *ngIf="descripciondeCarta !=='' " id="descripcionCarta">{{descripciondeCarta}}</div>
-         </div>
-        <div *ngIf="tipodecarta === 'Contendiente'" class="cajaestadisticas">
-          <div class="estadisticas">
-          {{ataque}}/{{defensa}}
-        </div>
-        </div>  
-    </div>
-</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          type="text"
+          maxlength="24"
+          [ngModel]="nombrecarta"
+          (ngModelChange)="nombrecarta = $event"
+          style="color: white"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Rareza</mat-label>
+        <mat-select type="text" [(ngModel)]="rareza">
+          <mat-option *ngFor="let rareza of rarezas" [value]="rareza">{{
+            rareza
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="color: rgb(247, 244, 240); margin-left: 30px">
+        Casa de la carta
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Casa principal</mat-label>
+        <mat-select
+          type="text"
+          [ngModel]="casa"
+          (ngModelChange)="comprobarCasa($event)"
+        >
+          <mat-option *ngFor="let casa of casas" [value]="casa">{{
+            casa
+          }}</mat-option>
+          <mat-option [value]="mercenario">{{ mercenario }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="casa != mercenario" appearance="fill">
+        <mat-label>Casa secundaria</mat-label>
+        <mat-select
+          type="text"
+          [(ngModel)]="casa2"
+          [disabled]="casa === '' || casa === 'Mercenario'"
+        >
+          <mat-option [value]="ninguna" selected>{{ ninguna }}</mat-option>
+          <mat-option
+            *ngFor="let casa2 of casas"
+            [value]="casa2"
+            [disabled]="casa === casa2"
+            >{{ casa2 }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <div style="color: rgb(247, 244, 240); margin-left: 30px">
+        Coste de la carta
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Blasones casa principal</mat-label>
+        <mat-select
+          type="text"
+          [(ngModel)]="costeprincipal"
 
-</div>
-<form [formGroup]="myForm" >
- 
-  <input hidden #file type="file" accept="image/*" (change)="imagePreview($event)" />
- <button class="descarga" (click)="file.click()" mat-raised-button color="primary">Cargar imagen de fondo</button>
+        >
+          <mat-option *ngFor="let coste of costecasaprincipal" [value]="coste">{{
+            coste
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Blasones casa secundaria</mat-label>
+        <mat-select
+          type="text"
+          [(ngModel)]="costesecundario"
 
-<button class="descarga" mat-raised-button color="primary" (click)="generarIMG()">Descargar Carta</button>
+        >
+          <mat-option *ngFor="let coste of costecasasecundaria" [value]="coste">{{
+            coste
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field><div></div>
+      <mat-form-field appearance="fill">
+        <mat-label>Coste incoloro</mat-label>
+        <mat-select
+          type="text"
+          [(ngModel)]="costeneutro"
+
+        >
+          <mat-option *ngFor="let coste of costesneutro" [value]="coste">{{
+            coste
+          }}</mat-option>
+          <mat-option value="X">X</mat-option>
+        </mat-select>
+        
+      </mat-form-field>
+      <div style="color: rgb(247, 244, 240); margin-left: 30px">
+        Tipo de carta
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <mat-select type="text" [(ngModel)]="tipodecarta">
+            <mat-option *ngFor="let tipo of tiposdecarta" [value]="tipo">{{
+              tipo
+            }}</mat-option>
+          </mat-select></mat-form-field
+        >
+        <mat-form-field appearance="fill">
+          <mat-label>Subtipo</mat-label>
+          <mat-select
+            type="text"
+            [(ngModel)]="subtipodecarta"
+            [disabled]="tipodecarta === '' || tipodecarta === tiposdecarta[1]"
+            [hidden]="tipodecarta === '' || tipodecarta === tiposdecarta[1]"
+          >
+            <mat-option
+              *ngFor="let subtipo of subtiposdecarta"
+              [value]="subtipo"
+              >{{ subtipo }}</mat-option
+            >
+          </mat-select></mat-form-field
+        >
+      </div>
+      <div
+        *ngIf="tipodecarta === 'Contendiente'"
+        style="color: rgb(247, 244, 240); margin-left: 30px"
+      >
+        Ataque y defensa
+      </div>
+      <div *ngIf="tipodecarta === 'Contendiente'">
+        <mat-form-field appearance="fill">
+          <mat-label>Ataque</mat-label>
+          <mat-select type="text" [(ngModel)]="ataque">
+            <mat-option value="X" selected>X</mat-option>
+            <mat-option *ngFor="let atq of ataques" [value]="atq">{{
+              atq
+            }}</mat-option>
+          </mat-select></mat-form-field
+        >
+        <mat-form-field appearance="fill">
+          <mat-label>Subtipo</mat-label>
+          <mat-select type="text" [(ngModel)]="defensa">
+            <mat-option value="X" selected>X</mat-option>
+            <mat-option *ngFor="let def of defensas" [value]="def">{{
+              def
+            }}</mat-option>
+          </mat-select></mat-form-field
+        >
+      </div>
+    </div>
+    <div class="textos">
+      <div class="1">
+        <mat-form-field appearance="fill">
+          <mat-label>Texto de la carta</mat-label>
+          <textarea
+            matInput
+            [ngModel]="textodeCarta"
+            (ngModelChange)="textoCarta($event)"
+            maxlength="300"
+            rows="7"
+            cols="50"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="2">
+        <mat-form-field appearance="fill">
+          <mat-label>Ambientación (Opcional)</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="descripciondeCarta"
+            maxlength="80"
+            rows="2"
+            cols="50"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="carta" id="carta">
+      <div class="base" style="background-image: url({{fondoimagen}})">
+        <div
+          [ngClass]="{
+            borcloy: casa === 'Borcloy' && casa2 === 'Ninguna',
+            yalmir: casa === 'Yalmir' && casa2 === 'Ninguna',
+            fenrir: casa === 'Fenrir' && casa2 === 'Ninguna',
+            rutghar: casa === 'Rutghar' && casa2 === 'Ninguna',
+            mercenario: casa === 'Mercenario',
+            borcloyyalmir:
+              (casa === 'Borcloy' && casa2 === 'Yalmir') ||
+              (casa === 'Yalmir' && casa2 === 'Borcloy'),
+            borcloyfenrir:
+              (casa === 'Borcloy' && casa2 === 'Fenrir') ||
+              (casa === 'Fenrir' && casa2 === 'Borcloy'),
+            yalmirfenrir:
+              (casa === 'Yalmir' && casa2 === 'Fenrir') ||
+              (casa === 'Fenrir' && casa2 === 'Yalmir'),
+            fenrirrutghar:
+              (casa === 'Fenrir' && casa2 === 'Rutghar') ||
+              (casa === 'Rutghar' && casa2 === 'Fenrir'),
+            rutgharborcloy:
+              (casa === 'Rutghar' && casa2 === 'Borcloy') ||
+              (casa === 'Borcloy' && casa2 === 'Rutghar'),
+            rutgharyalmir:
+              (casa === 'Rutghar' && casa2 === 'Yalmir') ||
+              (casa === 'Yalmir' && casa2 === 'Rutghar'),
+            comun: rareza === 'Común',
+            rara: rareza === 'Rara',
+            epica: rareza === 'Épica',
+            legendaria: rareza === 'Legendaria'
+          }"
+          class="nombre"
+        >
+          <p>{{ nombrecarta }}</p>
+        </div>
+        <div
+          [ngClass]="{
+            borcloy: casa === 'Borcloy' && casa2 === 'Ninguna',
+            yalmir: casa === 'Yalmir' && casa2 === 'Ninguna',
+            fenrir: casa === 'Fenrir' && casa2 === 'Ninguna',
+            rutghar: casa === 'Rutghar' && casa2 === 'Ninguna',
+            mercenario: casa === 'Mercenario',
+            borcloyyalmir:
+              (casa === 'Borcloy' && casa2 === 'Yalmir') ||
+              (casa === 'Yalmir' && casa2 === 'Borcloy'),
+            borcloyfenrir:
+              (casa === 'Borcloy' && casa2 === 'Fenrir') ||
+              (casa === 'Fenrir' && casa2 === 'Borcloy'),
+            yalmirfenrir:
+              (casa === 'Yalmir' && casa2 === 'Fenrir') ||
+              (casa === 'Fenrir' && casa2 === 'Yalmir'),
+            fenrirrutghar:
+              (casa === 'Fenrir' && casa2 === 'Rutghar') ||
+              (casa === 'Rutghar' && casa2 === 'Fenrir'),
+            rutgharborcloy:
+              (casa === 'Rutghar' && casa2 === 'Borcloy') ||
+              (casa === 'Borcloy' && casa2 === 'Rutghar'),
+            rutgharyalmir:
+              (casa === 'Rutghar' && casa2 === 'Yalmir') ||
+              (casa === 'Yalmir' && casa2 === 'Rutghar')
+          }"
+          class="tipocarta"
+        >
+          <h5>
+            {{ tipodecarta }}
+            <span *ngIf="tipodecarta === tiposdecarta[0]"
+              >: {{ subtipodecarta }}
+            </span>
+          </h5>
+          <div class="logos">
+            <div *ngIf="casa2 === 'Ninguna'" class="casaprincipal">
+              <img
+                *ngIf="casa === 'Borcloy'"
+                class="logo"
+                src="../assets/imagenes/borcloy.png"
+              />
+              <img
+                *ngIf="casa === 'Fenrir'"
+                class="logo"
+                src="../assets/imagenes/fenrir.png"
+              />
+              <img
+                *ngIf="casa === 'Rutghar'"
+                class="logo"
+                src="../assets/imagenes/rutghar.png"
+              />
+              <img
+                *ngIf="casa === 'Yalmir'"
+                class="logo"
+                src="../assets/imagenes/yalmir.png"
+              />
+            </div>
+            <div *ngIf="casa2 != 'Ninguna'" class="casasecundaria">
+              <div
+                *ngIf="
+                  (casa === 'Borcloy' && casa2 === 'Yalmir') ||
+                  (casa === 'Yalmir' && casa2 === 'Borcloy')
+                "
+                class="logoborcloyyalmir"
+              >
+                <img class="logo" src="../assets/imagenes/borcloy.png" />
+                <img class="logo" src="../assets/imagenes/yalmir.png" />
+              </div>
+              <div
+                *ngIf="
+                  (casa === 'Borcloy' && casa2 === 'Fenrir') ||
+                  (casa === 'Fenrir' && casa2 === 'Borcloy')
+                "
+                class="logoborcloyfenrir"
+              >
+                <img class="logo" src="../assets/imagenes/borcloy.png" />
+                <img class="logo" src="../assets/imagenes/fenrir.png" />
+              </div>
+              <div
+                *ngIf="
+                  (casa === 'Yalmir' && casa2 === 'Fenrir') ||
+                  (casa === 'Fenrir' && casa2 === 'Yalmir')
+                "
+                class="logoyalmirfenrir"
+              >
+                <img class="logo" src="../assets/imagenes/yalmir.png" />
+                <img class="logo" src="../assets/imagenes/fenrir.png" />
+              </div>
+              <div
+                *ngIf="
+                  (casa === 'Fenrir' && casa2 === 'Rutghar') ||
+                  (casa === 'Rutghar' && casa2 === 'Fenrir')
+                "
+                class="logofenrirrutghar"
+              >
+                <img class="logo" src="../assets/imagenes/fenrir.png" />
+                <img class="logo" src="../assets/imagenes/rutghar.png" />
+              </div>
+              <div
+                *ngIf="
+                  (casa === 'Rutghar' && casa2 === 'Borcloy') ||
+                  (casa === 'Borcloy' && casa2 === 'Rutghar')
+                "
+                class="logorutgharborcloy"
+              >
+                <img class="logo" src="../assets/imagenes/rutghar.png" />
+                <img class="logo" src="../assets/imagenes/borcloy.png" />
+              </div>
+              <div
+                *ngIf="
+                  (casa === 'Rutghar' && casa2 === 'Yalmir') ||
+                  (casa === 'Yalmir' && casa2 === 'Rutghar')
+                "
+                class="logorutgharyalmir"
+              >
+                <img class="logo" src="../assets/imagenes/rutghar.png" />
+                <img class="logo" src="../assets/imagenes/yalmir.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="textocarta">
+          <div id="textoCarta"></div>
+          <div *ngIf="descripciondeCarta !== ''" id="descripcionCarta">
+            {{ descripciondeCarta }}
+          </div>
+        </div>
+        <div
+        class="costedecartabase"
+        [ngClass]="{
+          comun: rareza === 'Común',
+          comunfondo: rareza === 'Común',
+          rara: rareza === 'Rara',
+          rarafondo: rareza === 'Rara',
+          epica: rareza === 'Épica',
+          epicafondo: rareza === 'Épica',
+          legendaria: rareza === 'Legendaria',
+          legendariafondo: rareza === 'Legendaria'
+        }"
+      >
+      <div class="circulomana">
+          <div class="blasoncoste1">
+          <img class="blason" src="../assets/imagenes/borcloy.png"
+          *ngIf="costeprincipal >= 1 && casa === 'Borcloy'"/>
+          <img class="blason" src="../assets/imagenes/fenrir.png"
+          *ngIf="costeprincipal >= 1 && casa === 'Fenrir'"/>
+          <img class="blason" src="../assets/imagenes/rutghar.png"
+          *ngIf="costeprincipal >= 1 && casa === 'Rutghar'"/>
+          <img class="blason" src="../assets/imagenes/yalmir.png"
+          *ngIf="costeprincipal >= 1 && casa === 'Yalmir'"/>
+          </div>
+          <div class="blasoncoste4">
+            <img class="blason" src="../assets/imagenes/borcloy.png"
+            *ngIf="costeprincipal === 4 && casa === 'Borcloy' || 
+            costesecundario === 1 && casa2 === 'Borcloy' && 3 === costeprincipal ||
+            costesecundario === 2 && casa2 === 'Borcloy' && 2 === costeprincipal ||
+            costesecundario === 3 && casa2 === 'Borcloy' && 1 === costeprincipal "/>
+            <img class="blason" src="../assets/imagenes/fenrir.png"
+            *ngIf="costeprincipal === 4 && casa === 'Fenrir' || 
+            costesecundario === 1 && casa2 === 'Fenrir' && 3 === costeprincipal ||
+            costesecundario === 2 && casa2 === 'Fenrir' && 2 === costeprincipal ||
+            costesecundario === 3 && casa2 === 'Fenrir' && 1 === costeprincipal "/>
+            <img class="blason" src="../assets/imagenes/rutghar.png"
+            *ngIf="costeprincipal === 4 && casa === 'Rutghar' || 
+            costesecundario === 1 && casa2 === 'Rutghar' && 3 === costeprincipal ||
+            costesecundario === 2 && casa2 === 'Rutghar' && 2 === costeprincipal ||
+            costesecundario === 3 && casa2 === 'Rutghar' && 1 === costeprincipal "/>
+            <img class="blason" src="../assets/imagenes/yalmir.png"
+            *ngIf="costeprincipal === 4 && casa === 'Yalmir' || 
+            costesecundario === 1 && casa2 === 'Yalmir' && 3 === costeprincipal ||
+            costesecundario === 2 && casa2 === 'Yalmir' && 2 === costeprincipal ||
+            costesecundario === 3 && casa2 === 'Yalmir' && 1 === costeprincipal "/>
+          </div>
+          <div class="blasoncoste2">
+            <img class="blason" src="../assets/imagenes/borcloy.png"
+            *ngIf="costeprincipal >= 2 && casa === 'Borcloy' || costesecundario >=1 && casa2 === 'Borcloy' && costeprincipal === 1"/>
+            <img class="blason" src="../assets/imagenes/fenrir.png"
+            *ngIf="costeprincipal >= 2 && casa === 'Fenrir' || costesecundario >=1 && casa2 === 'Fenrir' && costeprincipal === 1"/>
+            <img class="blason" src="../assets/imagenes/rutghar.png"
+            *ngIf="costeprincipal >= 2 && casa === 'Rutghar' || costesecundario >=1 && casa2 === 'Rutghar' && costeprincipal === 1"/>
+            <img class="blason" src="../assets/imagenes/yalmir.png"
+            *ngIf="costeprincipal >= 2 && casa === 'Yalmir' || costesecundario >=1 && casa2 === 'Yalmir' && costeprincipal === 1"/>
+          </div>            
+          <div class="blasoncoste3">
+            <img class="blason" src="../assets/imagenes/borcloy.png"
+            *ngIf="costeprincipal >= 3 && casa === 'Borcloy' || 
+            costesecundario === 1 && casa2 === 'Borcloy' &&  costeprincipal === 2 || 
+            costesecundario === 2 && casa2 === 'Borcloy' &&  costeprincipal === 1|| 
+            costesecundario === 2 && casa2 === 'Borcloy' &&  costeprincipal === 2"/>
+            <img class="blason" src="../assets/imagenes/fenrir.png"
+            *ngIf="costeprincipal >= 3 && casa === 'Fenrir' || 
+            costesecundario === 1 && casa2 === 'Fenrir' &&  costeprincipal === 2 || 
+            costesecundario >= 2 && casa2 === 'Fenrir' &&  costeprincipal === 1|| 
+            costesecundario === 2 && casa2 === 'Fenrir' &&  costeprincipal === 2"/>
+            <img class="blason" src="../assets/imagenes/rutghar.png"
+            *ngIf="costeprincipal >= 3 && casa === 'Rutghar' || 
+            costesecundario === 1 && casa2 === 'Rutghar' &&  costeprincipal === 2 || 
+            costesecundario >= 2 && casa2 === 'Rutghar' &&  costeprincipal === 1|| 
+            costesecundario === 2 && casa2 === 'Rutghar' &&  costeprincipal === 2"/>
+            <img class="blason" src="../assets/imagenes/yalmir.png"
+            *ngIf="costeprincipal >= 3 && casa === 'Yalmir' || 
+            costesecundario === 1 && casa2 === 'Yalmir' &&  costeprincipal === 2 || 
+            costesecundario >= 2 && casa2 === 'Yalmir' &&  costeprincipal === 1|| 
+            costesecundario === 2 && casa2 === 'Yalmir' &&  costeprincipal === 2"/>
+          </div>
+
+          <div class="costegeneral">
+            <span class="costeneutro" *ngIf="costeneutro !='0'">{{costeneutro}}</span>
+          </div>
+      </div>
+    </div>
+        <div
+          *ngIf="tipodecarta === 'Contendiente'"
+          class="cajaestadisticas"
+          [ngClass]="{
+            comun: rareza === 'Común',
+            rara: rareza === 'Rara',
+            epica: rareza === 'Épica',
+            legendaria: rareza === 'Legendaria'
+          }"
+        >
+          <div class="estadisticas">{{ ataque }}/{{ defensa }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="myForm">
+    <input
+      hidden
+      #file
+      type="file"
+      accept="image/*"
+      (change)="imagePreview($event)"
+    />
+    <button
+      class="descarga"
+      (click)="file.click()"
+      mat-raised-button
+      color="primary"
+    >
+      Cargar imagen de fondo
+    </button>
+
+    <button
+      class="descarga"
+      mat-raised-button
+      color="primary"
+      (click)="generarIMG()"
+    >
+      Descargar Carta
+    </button>
   </form>
-
 </div>

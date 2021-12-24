@@ -1,8 +1,24 @@
-$yalmir: rgba(165, 28, 49, 0.851);
-$borcloy: rgba(95, 56, 105, 0.851);
-$fenrir: rgba(128, 214, 248, 0.851);
-$rutghar: rgba(44, 51, 118, 0.851);
-$mercenario: rgba(80, 80, 80, 0.851);
+$yalmir: rgba(165, 28, 49, 0.951);
+$borcloy: rgba(95, 56, 105, 0.951);
+$fenrir: rgba(128, 214, 248, 0.951);
+$rutghar: rgba(44, 51, 118, 0.951);
+$mercenario: rgba(80, 80, 80, 0.951);
+$bordes: rgb(114, 114, 114);
+$comun: rgb(165, 165, 165);
+$borderara: rgb(37, 55, 83);
+$rara: rgb(65, 96, 145);
+$bordeepica: rgb(173, 4, 151);
+$epica: rgb(233, 14, 204);
+$bordelegendaria: linear-gradient(
+    45deg,
+    rgb(220, 214, 255),
+    rgb(214, 240, 255),
+    rgb(222, 255, 239),
+    rgb(255, 250, 240),
+    rgb(255, 237, 237),
+    rgb(255, 222, 222)
+);
+$blasonvacio: rgba(255, 255, 255, 0.26);
 textarea {
     overflow: scroll;
     resize: none !important;
@@ -38,9 +54,6 @@ textarea {
         width: 63mm;
         height: 88mm;
         .base {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
             background-repeat: no-repeat;
             background-size: 63mm 88mm !important;
             width: 63mm;
@@ -49,22 +62,27 @@ textarea {
             background-color: rgba(255, 255, 255, 0.151);
 
             .nombre {
-                margin-top: 15px;
-                margin-left: 34px;
-                width: 73%;
+                position: relative;
+                left: 43px;
+                top: 11px;
+                border: transparent 2px solid;
+                border-radius: 0px 6px 6px 0px !important;
+                width: 75%;
                 height: 6%;
                 border-radius: 2px;
                 font-size: small;
+                z-index: 0;
 
                 p {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     text-align: center;
-                    padding-left: 5px;
+                    margin-left: 15px;
                     -webkit-text-stroke: 0.1px rgb(0, 0, 0);
                     color: white !important;
                     font-weight: 1000;
+                    overflow: hidden;
                 }
             }
             .tipocarta {
@@ -73,10 +91,13 @@ textarea {
                 margin-top: 173px;
                 width: 83.5%;
                 height: 5%;
-                border-radius: 2px;
+                border-radius: 2px 2px 0px 0px;
                 font-size: small;
                 text-align: left;
                 padding-left: 5px;
+                position: relative;
+                left: 19px;
+                top: 7px;
             }
             .borcloy {
                 background-color: $borcloy;
@@ -131,15 +152,17 @@ textarea {
         }
         .textocarta {
             background-color: rgba(255, 255, 255, 0.692);
-            width: 85.5%;
+            width: 85.479%;
             height: 96px;
-            border-radius: 2px;
+            border-radius: 0px 0px 2px 2px;
             margin-top: -0.5px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            left: 19px;
+            top: 7px;
             z-index: 1;
 
             #textoCarta {
@@ -175,11 +198,11 @@ textarea {
             width: 45px;
             background-color: rgb(179, 179, 179);
             position: relative;
-            left: 85px;
-            top: -10px;
+            left: 180px;
+            bottom: 63px;
             border-radius: 10px;
             z-index: 2;
-            border: rgb(114, 114, 114) 2px solid;
+            border: $bordes 2px solid;
             justify-content: center;
             align-items: center;
             display: flex;
@@ -193,6 +216,114 @@ textarea {
                 color: black;
                 font-weight: 460;
             }
+        }
+        .costedecartabase {
+            height: 50px;
+            width: 50px;
+            border: 3px solid;
+            position: relative;
+            border-radius: 50px;
+            left: 10px;
+            bottom: 300px;
+            z-index: 6;
+            .circulomana{
+                position: relative;
+                top: 6px;
+                left: 5px;
+                height: 40px;
+                width:  40px;
+                background-image: url(../assets/imagenes/circulo.jpg);
+                background-repeat: no-repeat;
+                background-size:43px 45px;
+                background-position: center;
+                border-radius: 50px;
+                .blasoncoste1{
+                    display: flex;
+                    background-color: $blasonvacio;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50px;
+                    position: relative;
+                    left: 6px;
+                    top: 5px;
+                }
+                .blasoncoste3 {
+                    display: flex;
+                    background-color: $blasonvacio;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50px;
+                    position: relative;
+                    left: 24.6px;
+                    bottom: 4.9px;
+                }
+                .blasoncoste2{
+                    display: flex;
+                    background-color: $blasonvacio;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50px;
+                    position: relative;
+                    left: 6px;
+                    top: 5px;
+                }
+                .blasoncoste4{
+                    display: flex;
+                    background-color: $blasonvacio;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50px;
+                    position: relative;
+                    left: 24.6px;
+                    bottom: 4.6px;
+                }
+                .costegeneral{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $blasonvacio;
+                    height: 13px;
+                    width: 13px;
+                    border-radius: 50px;
+                    position: relative;
+                    left: 13.4px;
+                    bottom: 26.7px;
+                    .costeneutro{
+                        color:white;
+                        font-size: 10px;
+                    }
+                }
+                
+            }
+        }
+        .legendariafondo {
+            background-image: $bordelegendaria !important;
+        }
+        .rarafondo {
+            background-color: $rara !important;
+        }
+        .comunfondo {
+            background-color: $comun !important;
+        }
+        .epicafondo {
+            background-color: $epica !important;
+        }
+        .legendaria {
+            border-image: $bordelegendaria !important;
+            border-image-slice: 5 !important;
+        }
+        .rara {
+            border-color: $borderara !important;
+        }
+        .epica {
+            border-color: $bordeepica !important;
+        }
+        .comun {
+            border-color: $bordes !important;
+        }
+        .blason {
+            height: 10px;
+            width: 10px;
         }
     }
 }
