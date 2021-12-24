@@ -9,15 +9,8 @@ $borderara: rgb(37, 55, 83);
 $rara: rgb(65, 96, 145);
 $bordeepica: rgb(173, 4, 151);
 $epica: rgb(233, 14, 204);
-$bordelegendaria: linear-gradient(
-    45deg,
-    rgb(220, 214, 255),
-    rgb(214, 240, 255),
-    rgb(222, 255, 239),
-    rgb(255, 250, 240),
-    rgb(255, 237, 237),
-    rgb(255, 222, 222)
-);
+$bordelegendaria: rgb(145, 153, 26);
+$legendaria: rgb(170, 177, 72);
 $blasonvacio: rgba(255, 255, 255, 0.26);
 textarea {
     overflow: scroll;
@@ -297,7 +290,7 @@ textarea {
             }
         }
         .legendariafondo {
-            background-image: $bordelegendaria !important;
+            background-color: $legendaria !important;
         }
         .rarafondo {
             background-color: $rara !important;
@@ -309,8 +302,7 @@ textarea {
             background-color: $epica !important;
         }
         .legendaria {
-            border-image: $bordelegendaria !important;
-            border-image-slice: 5 !important;
+            border-color: $bordelegendaria !important;
         }
         .rara {
             border-color: $borderara !important;
