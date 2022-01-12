@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Peralta&display=swap');
 $yalmir: rgba(165, 28, 49, 0.951);
 $borcloy: rgba(95, 56, 105, 0.951);
-$fenrir: rgba(128, 214, 248, 0.951);
+$fenrir: rgba(106, 177, 206, 0.951);
 $rutghar: rgba(44, 51, 118, 0.951);
 $mercenario: rgba(80, 80, 80, 0.951);
-$bordes: rgb(114, 114, 114);
-$comun: rgb(165, 165, 165);
-$borderara: rgb(37, 55, 83);
-$rara: rgb(65, 96, 145);
-$bordeepica: rgb(173, 4, 151);
-$epica: rgb(233, 14, 204);
-$bordelegendaria: rgb(145, 153, 26);
-$legendaria: rgb(170, 177, 72);
+$bordes: rgb(85, 82, 80);
+$comun: rgb(109, 108, 109);
+$borderara: rgb(5, 78, 147);
+$rara: rgb(8, 111, 163);
+$bordeepica: rgb(148, 36, 194);
+$epica: rgb(169, 45, 213);
+$bordelegendaria: rgb(189, 153, 36);
+$legendaria: rgb(212, 175, 55);
 $blasonvacio: rgba(255, 255, 255, 0.26);
+$fuentedenombre : 'Peralta', cursive;
+
+
+
+
 textarea {
     overflow: scroll;
     resize: none !important;
@@ -39,6 +46,13 @@ textarea {
     justify-content: space-evenly;
     .datos {
         flex-direction: column;
+    }
+    .columna{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
     }
     .textos {
         flex-direction: column;
@@ -72,10 +86,11 @@ textarea {
                     align-items: center;
                     text-align: center;
                     margin-left: 15px;
-                    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+                    -webkit-text-stroke: 0.3px rgb(0, 0, 0);
                     color: white !important;
-                    font-weight: 1000;
+                    font-family: $fuentedenombre;
                     overflow: hidden;
+                    font-size: 9px;
                 }
             }
             .tipocarta {
@@ -84,13 +99,16 @@ textarea {
                 margin-top: 173px;
                 width: 83.5%;
                 height: 5%;
-                border-radius: 2px 2px 0px 0px;
+                border-radius: 3px 3px 0px 0px;
                 font-size: small;
                 text-align: left;
                 padding-left: 5px;
                 position: relative;
                 left: 19px;
                 top: 7px;
+                border-right: 2px black solid;
+                border-left: 2px black solid;
+                border-top: 2px black solid;
             }
             .borcloy {
                 background-color: $borcloy;
@@ -145,9 +163,9 @@ textarea {
         }
         .textocarta {
             background-color: rgba(255, 255, 255, 0.692);
-            width: 85.479%;
+            width: 85.6%;
             height: 96px;
-            border-radius: 0px 0px 2px 2px;
+            border-radius: 0px 0px 3px 3px;
             margin-top: -0.5px;
             overflow: hidden;
             display: flex;
@@ -157,6 +175,9 @@ textarea {
             left: 19px;
             top: 7px;
             z-index: 1;
+            border-right: 2px black solid;
+            border-left: 2px black solid;
+            border-bottom: 2px black solid;
 
             #textoCarta {
                 padding: 5px;
@@ -217,7 +238,7 @@ textarea {
             position: relative;
             border-radius: 50px;
             left: 10px;
-            bottom: 300px;
+            bottom: 309px;
             z-index: 6;
             .circulomana{
                 position: relative;

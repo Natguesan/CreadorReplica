@@ -7,18 +7,25 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
+
+
+
+
 
 const MaterialComponents = [
   MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule
 ]
 
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   exports : [MaterialComponents],
   imports: [
@@ -27,7 +34,7 @@ const MaterialComponents = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialComponents,
-    NgxMatFileInputModule
+    NgxMatFileInputModule,   
   ],
   providers: [],
   bootstrap: [AppComponent],
