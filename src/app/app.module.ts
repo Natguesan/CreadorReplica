@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -19,7 +20,8 @@ const MaterialComponents = [
   MatSelectModule,
   MatInputModule,
   MatButtonModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTooltipModule
 ]
 
 @NgModule({

@@ -15,14 +15,17 @@ $bordelegendaria: rgb(189, 153, 36);
 $legendaria: rgb(212, 175, 55);
 $blasonvacio: rgba(255, 255, 255, 0.26);
 $fuentedenombre : 'Peralta', cursive;
-
-
-
+$colorpaletamaterial : #F50057;
 
 textarea {
-    overflow: scroll;
+    overflow: hidden;
     resize: none !important;
     color: white;
+    background-color: rgba(0, 0, 0, 0.11);
+    border: $colorpaletamaterial 1px solid;
+}
+textarea:focus{
+    color: $colorpaletamaterial !important;
 }
 .contenedorprincipal {
     height: 100vh;
@@ -55,7 +58,48 @@ textarea {
         margin-top: 15px;
     }
     .textos {
+        display: flex;
         flex-direction: column;
+        margin-top: 5px;
+        .toolbar{
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.11);
+            border-right: $colorpaletamaterial 1px solid;
+            border-top: $colorpaletamaterial 1px solid;
+            border-left: $colorpaletamaterial 1px solid;
+            border-bottom: transparent 1px solid;
+            padding: 2px;
+            border-radius: 5px 5px 0px 0px;
+            button {
+                background-color: transparent;
+                border-color: $colorpaletamaterial;
+                color:  white;
+                border-radius: 5px;
+                margin-left: 3px;
+            }
+            button:hover {
+                background-color: transparent;
+                border-color: white;
+                color:  $colorpaletamaterial;
+                margin-left: 2px;
+                border-radius: 5px;
+            }
+        }
+        .texto{
+            height: 130px;
+            border-right: $colorpaletamaterial 1px solid;
+            border-bottom: $colorpaletamaterial 1px solid;
+            border-left: $colorpaletamaterial 1px solid;
+            border-top: transparent 1px solid;
+            border-radius: 0px 0px 5px 5px;
+        }
+        .ambientacion{
+            margin-top: 5px;
+            border-radius: 5px;
+            height: 30px;
+            border: $colorpaletamaterial 1px solid;
+        }
     }
     .carta {
         width: 63mm;
@@ -67,7 +111,20 @@ textarea {
             height: 88mm;
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.151);
-
+            .letrararezatactica {
+                position: relative;
+                bottom: 53px;
+                left: 20px;
+                font-size: 10px;
+                color:white;
+            }
+            .letrararezacontendiente {
+                position: relative;
+                bottom: 75px;
+                left: 20px;
+                font-size: 10px;
+                color:white;
+            }
             .nombre {
                 position: relative;
                 left: 43px;

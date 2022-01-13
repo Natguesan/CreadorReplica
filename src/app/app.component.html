@@ -137,45 +137,55 @@
       </div>
  </mat-tab>
  <mat-tab label="Textos"  >
-<div id="textodelacarta" contenteditable="true" ngDefaultControl [ngModel]="textodeCarta" (ngModelChange)="textodelaCarta($event)"></div>
-
+  <div class="textos">
+    <div class="toolbar">
+    <button matTooltip="Para añadir Negrita al texto" (click)="anadirNegrita()"><b>b</b></button>
+    <button matTooltip="No puede ser objetivo de tácticas ni habilidades" (click)="anadirhabilidad('AntiHechizo')">Anti-Hechizo</button>
+    <button matTooltip="Ignora el primer daño recibido durante el turno" (click)="anadirhabilidad('Evasion')">Evasión</button>
+    <button matTooltip="Si tiene más ataque que defensa el rival el daño restante pasa a puntos de conquista" (click)="anadirhabilidad('Perforar')">Perforar</button>
+    <button matTooltip="El contendiente puede atacar a contendientes rivales preparados" (click)="anadirhabilidad('Precision')">Precisión</button>
+    <button matTooltip="Golpea en primera posición en caso de enfrentarse a otro contendiente" (click)="anadirhabilidad('PrimerGolpe')">Primer Golpe</button>
+    <button matTooltip="El contendiente pierde el 'Mareo de invocación'" (click)="anadirhabilidad('Rapidez')">Rapidez</button>
+    <button matTooltip="Tras finalizar el combate el contendiente recupera todos sus puntos de vida" (click)="anadirhabilidad('Regeneracion')">Regeneración</button>
+    <button matTooltip="No puede ser bloqueado salvo por otro contendiente con sigilo" (click)="anadirhabilidad('Sigilo')">Sigilo</button>
+    <button matTooltip="Puede ser jugado en cualquier momento" (click)="anadirhabilidad('Veloz')">Veloz</button>
+    <button matTooltip="No puede ser bloqueado salvo por otro contendiente con volar" (click)="anadirhabilidad('Volar')">Volar</button>
+</div>
+        <textarea
+          id="textarea"
+          class="texto"
+          [ngModel]="textodeCarta"
+          (ngModelChange)="textoCarta($event)"
+          rows="7"
+          cols="50"
+        ></textarea>
+        <textarea
+          class="ambientacion"
+          [(ngModel)]="descripciondeCarta"
+          maxlength="80"
+          rows="2"
+          cols="50"
+        ></textarea>
+  </div>
+ </mat-tab>
+ <mat-tab label="Colección">
+   <div class="columna">
+  <mat-form-field appearance="fill">
+    <mat-label>Colección</mat-label>
+    <mat-select type="text" [(ngModel)]="coleccion">
+      <mat-option *ngFor="let coleccion of colecciones" [value]="coleccion">
+     {{coleccion.nombre}}
+      </mat-option>
+    </mat-select></mat-form-field> 
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Número colección</mat-label>
+      <input matInput type="number" style="color: white" max="99" min="1" [ngModel]="numerocoleccion"
+      (ngModelChange)="comprobarnumero($event)">
+    </mat-form-field>
+  </div>
  </mat-tab>
       </mat-tab-group>
-
-
     </div>
-    <div class="textos">
-      <button (click)="anadirNegrita()">Negrita</button>
-      <button (click)="anadirEva()">Evasión</button>
-      <button (click)="anadirRap()">Rapidez</button>
-      <div class="uno">
-        <mat-form-field appearance="fill">
-          <mat-label>Texto de la carta</mat-label>
-
-          <textarea
-            id="textarea"
-            matInput
-            [ngModel]="textodeCarta"
-            (ngModelChange)="textoCarta($event)"
-            rows="7"
-            cols="50"
-          ></textarea>
-        </mat-form-field>
-      </div>
-      <div class="2">
-        <mat-form-field appearance="fill">
-          <mat-label>Ambientación (Opcional)</mat-label>
-          <textarea
-            matInput
-            [(ngModel)]="descripciondeCarta"
-            maxlength="80"
-            rows="2"
-            cols="50"
-          ></textarea>
-        </mat-form-field>
-      </div>
-    </div>
-
     <div class="carta" id="carta">
       <div class="base" style="background-image: url({{fondoimagen}})">
         <div
@@ -580,6 +590,20 @@
           }"
         >
           <div class="estadisticas">{{ ataque }}/{{ defensa }}</div>
+        </div>
+        <div *ngIf="tipodecarta === 'Táctica'"class="letrararezatactica">
+          <span *ngIf="coleccion.siglas !==''">{{coleccion.siglas}}</span><span *ngIf="numerocoleccion > 0">-<span *ngIf=" 10 > numerocoleccion">0</span>{{numerocoleccion}}</span>
+          <span class=""*ngIf="rareza === 'Común'">C</span>
+          <span class=""*ngIf="rareza === 'Rara'">R</span>
+          <span class=""*ngIf="rareza === 'Épica'">EP</span>
+          <span class=""*ngIf="rareza === 'Legendaria'">LG</span>
+        </div>
+        <div *ngIf="tipodecarta === 'Contendiente'"class="letrararezacontendiente">
+          <span *ngIf="coleccion.siglas !==''">{{coleccion.siglas}}</span><span *ngIf="numerocoleccion > 0">-<span *ngIf=" 10 > numerocoleccion">0</span>{{numerocoleccion}}</span>
+          <span class=""*ngIf="rareza === 'Común'">C</span>
+          <span class=""*ngIf="rareza === 'Rara'">R</span>
+          <span class=""*ngIf="rareza === 'Épica'">EP</span>
+          <span class=""*ngIf="rareza === 'Legendaria'">LG</span>
         </div>
       </div>
     </div>
