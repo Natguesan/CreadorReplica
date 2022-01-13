@@ -1,8 +1,9 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
 import {Coleccion} from './models/coleccion';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -49,14 +50,24 @@ export class AppComponent implements OnInit {
   {nombre:"SET1", siglas: "SET1"}]
   numerocoleccion : number = 0;
   filename : string = "sintitulo.png"
-  constructor(public fb: FormBuilder, private _fb: FormBuilder) {
+  constructor(public fb: FormBuilder, public dialog: MatDialog) {
     this.myForm = this.fb.group({
       img: [null],
       filename: ['']
     });
 
   }
- 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(Appcomponentdialog, {
+      width: '250px',
+      data: this.filename,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.filename = result;
+      
+    });
+  }
 
   ngOnInit(): void {
 
@@ -107,27 +118,6 @@ this.textodeCarta = this.textodeCarta + "<b>";
       this.fondoimagen = reader.result as string;
     }
     reader.readAsDataURL(file)
-  }
-
-
-  generarIMG(): void {
-    let filename = prompt('Nombre de archivo');
-    this.filename = filename!
-    const DATA = document.getElementById('carta');
-    const options = {
-      scale: 1
-    }
-    html2canvas(DATA!, options).then(canvas => {
-      this.imagencreada = canvas.toDataURL("image/png");
-      this.downloadImage(this.imagencreada, this.filename)
-    })
-  }
-  downloadImage(data: string, filename : string) {
-    let a = document.createElement('a');
-    a.href = data;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click()
   }
   anadirhabilidad(hab : string) : void {
     if (hab === 'Evasion'){
@@ -186,4 +176,37 @@ this.textodeCarta = this.textodeCarta + "<b>";
     document.querySelector('#textodelacarta')!.innerHTML = completedText
   }
 
+}
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.dialog.html',
+  styleUrls: ['./app.component.scss']
+})
+export class Appcomponentdialog {
+  imagencreada : string = "";
+  constructor(
+    public dialogRef: MatDialogRef<Appcomponentdialog>,
+    @Inject(MAT_DIALOG_DATA) public data: string,
+  ) {}
+  generarIMG(): void {
+     const DATA = document.getElementById('carta');
+     const options = {
+       scale: 1
+     }
+     html2canvas(DATA!, options).then(canvas => {
+       this.imagencreada = canvas.toDataURL("image/png");
+       this.downloadImage(this.imagencreada, this.data)
+     })
+   }
+   downloadImage(data: string, filename : string) {
+     let a = document.createElement('a');
+     a.href = data;
+     a.download = filename;
+     document.body.appendChild(a);
+     a.click()
+   }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
