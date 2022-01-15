@@ -16,6 +16,7 @@ $legendaria: rgb(212, 175, 55);
 $blasonvacio: rgba(255, 255, 255, 0.26);
 $fuentedenombre : 'Peralta', cursive;
 $colorpaletamaterial : #F50057;
+$negrotransparente : rgba(0, 0, 0, 0.5) ;
 
 textarea {
     overflow: hidden;
@@ -113,17 +114,32 @@ textarea:focus{
             background-color: rgba(255, 255, 255, 0.151);
             .letrararezatactica {
                 position: relative;
-                bottom: 53px;
+                bottom: 49px;
                 left: 20px;
                 font-size: 10px;
                 color:white;
+                background-color: $negrotransparente;
+                width: 25%;
+                height: 12px;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
             }
             .letrararezacontendiente {
                 position: relative;
-                bottom: 75px;
+                bottom: 71px;
                 left: 20px;
                 font-size: 10px;
                 color:white;
+                background-color: $negrotransparente;
+                width: 25%;
+                height: 12px;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .nombre {
                 position: relative;
@@ -169,11 +185,11 @@ textarea:focus{
             }
             .borcloy {
                 background-color: $borcloy;
-                color: black;
+                color: white;
             }
             .yalmir {
                 background-color: $yalmir;
-                color: black;
+                color: white;
             }
             .fenrir {
                 background-color: $fenrir;
@@ -181,23 +197,23 @@ textarea:focus{
             }
             .rutghar {
                 background-color: $rutghar;
-                color: black;
+                color: white;
             }
             .mercenario {
                 background-color: $mercenario;
-                color: black;
+                color: white;
             }
             .borcloyyalmir {
                 background-image: linear-gradient(to right, $borcloy, $yalmir);
-                color: black;
+                color: white;
             }
             .borcloyfenrir {
                 background-image: linear-gradient(to right, $borcloy, $fenrir);
-                color: black;
+                color: white;
             }
             .yalmirfenrir {
                 background-image: linear-gradient(to right, $yalmir, $fenrir);
-                color: black;
+                color: white;
             }
             .fenrirrutghar {
                 background-image: linear-gradient(to right, $fenrir, $rutghar);
@@ -205,11 +221,11 @@ textarea:focus{
             }
             .rutgharborcloy {
                 background-image: linear-gradient(to right, $rutghar, $borcloy);
-                color: black;
+                color: white;
             }
             .rutgharyalmir {
                 background-image: linear-gradient(to right, $rutghar, $yalmir);
-                color: black;
+                color: white;
             }
             .logo {
                 height: 13px;

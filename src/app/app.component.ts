@@ -21,8 +21,8 @@ export class AppComponent implements OnInit {
   casas: Array<string> = ["Borcloy", "Fenrir", "Rutghar", "Yalmir"];
   imagencreada = "";
   tiposdecarta: Array<string> = ["Contendiente", "Táctica"];
-  tipodecarta: string = "";
-  subtiposdecarta: Array<string> = ["Pistolero", "Espadachín", "Hechicero", "Guerrero", "Mago", "Cazador", "Bestia", "Caballero", "Ladrón", "Místico","Adepto","Dama","Dragón"];
+  tipodecarta: string = "Contendiente";
+  subtiposdecarta: Array<string> = ["Pistolero", "Espadachín", "Hechicero", "Guerrero", "Mago", "Cazador", "Bestia", "Caballero", "Ladrón", "Místico","Adepto","Dama","Dragón","Asesino"];
   subtipodecarta: string = "";
   filePath: string = "";
   myForm: FormGroup;
