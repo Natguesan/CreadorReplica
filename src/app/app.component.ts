@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   imagencreada = "";
   tiposdecarta: Array<string> = ["Contendiente", "Táctica"];
   tipodecarta: string = "";
-  subtiposdecarta: Array<string> = ["Pistolero", "Espadachín", "Hechicero", "Guerrero", "Mago", "Cazador", "Bestia", "Caballero", "Ladrón", "Místico"];
+  subtiposdecarta: Array<string> = ["Pistolero", "Espadachín", "Hechicero", "Guerrero", "Mago", "Cazador", "Bestia", "Caballero", "Ladrón", "Místico","Adepto","Dama","Dragón"];
   subtipodecarta: string = "";
   filePath: string = "";
   myForm: FormGroup;
