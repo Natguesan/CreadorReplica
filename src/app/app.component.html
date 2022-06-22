@@ -97,21 +97,40 @@
             }}</mat-option>
           </mat-select></mat-form-field
         >
-        <mat-form-field appearance="fill">
+        <mat-form-field *ngIf="tipodecarta != 'Táctica'" appearance="fill">
           <mat-label>Subtipo</mat-label>
           <mat-select
+          
             type="text"
             [(ngModel)]="subtipodecarta"
             [disabled]="tipodecarta === '' || tipodecarta === tiposdecarta[1]"
             [hidden]="tipodecarta === '' || tipodecarta === tiposdecarta[1]"
           >
             <mat-option
+              
               *ngFor="let subtipo of subtiposdecarta"
               [value]="subtipo"
               >{{ subtipo }}</mat-option
             >
-          </mat-select></mat-form-field
-        >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="tipodecarta != 'Contendiente'" appearance="fill">
+          <mat-label>Subtipo</mat-label>
+          <mat-select
+          
+            type="text"
+            [(ngModel)]="subtipodecarta"
+            [disabled]="tipodecarta === '' || tipodecarta === tiposdecarta[0]"
+            [hidden]="tipodecarta === '' || tipodecarta === tiposdecarta[0]"
+          >
+            <mat-option
+              
+              *ngFor="let subtipo of subtiposdetactica"
+              [value]="subtipo"
+              >{{ subtipo }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
       </div>
  </mat-tab>
  <mat-tab  *ngIf="tipodecarta === 'Contendiente'" label="Atq & Def">
@@ -140,16 +159,19 @@
   <div class="textos">
     <div class="toolbar">
     <button matTooltip="Para añadir Negrita al texto" (click)="anadirNegrita()"><b>b</b></button>
-    <button matTooltip="No puede ser objetivo de tácticas ni habilidades" (click)="anadirhabilidad('AntiHechizo')">Anti-Hechizo</button>
-    <button matTooltip="Ignora el primer daño recibido durante el turno" (click)="anadirhabilidad('Evasion')">Evasión</button>
-    <button matTooltip="Si tiene más ataque que defensa el rival el daño restante pasa a puntos de conquista" (click)="anadirhabilidad('Perforar')">Perforar</button>
-    <button matTooltip="El contendiente puede atacar a contendientes rivales preparados" (click)="anadirhabilidad('Precision')">Precisión</button>
-    <button matTooltip="Golpea en primera posición en caso de enfrentarse a otro contendiente" (click)="anadirhabilidad('PrimerGolpe')">Primer Golpe</button>
-    <button matTooltip="El contendiente pierde el 'Mareo de invocación'" (click)="anadirhabilidad('Rapidez')">Rapidez</button>
-    <button matTooltip="Tras finalizar el combate el contendiente recupera todos sus puntos de vida" (click)="anadirhabilidad('Regeneracion')">Regeneración</button>
-    <button matTooltip="No puede ser bloqueado salvo por otro contendiente con sigilo" (click)="anadirhabilidad('Sigilo')">Sigilo</button>
-    <button matTooltip="Puede ser jugado en cualquier momento" (click)="anadirhabilidad('Veloz')">Veloz</button>
-    <button matTooltip="No puede ser bloqueado salvo por otro contendiente con volar" (click)="anadirhabilidad('Volar')">Volar</button>
+    <button matTooltip="Ignora el primer daño recibido en cada turno." (click)="anadirhabilidad('Aguante')">Aguante</button>
+    <button matTooltip="Si el contendiente tiene tiene más ataque que la resistencia del contendiente enemigo el daño restante pasa a puntos de conquista." (click)="anadirhabilidad('Arrollar')">Arrollar</button>
+    <button matTooltip="Siempre que este contendiente derrote a otro contendiente si sobrevive obtiene +1/+1." (click)="anadirhabilidad('Coraje')">Coraje</button>
+    <button matTooltip="Solo puede ser bloqueado por contendientes con Evasivo" (click)="anadirhabilidad('Evasivo')">Evasivo</button>
+    <button matTooltip="No puede atacar." (click)="anadirhabilidad('Guardian')">Guardian</button>
+    <button matTooltip="Siempre que este contendiente haga al menos 1 de daño a otro contendiente lo destruye sin importar su resistencia." (click)="anadirhabilidad('Letal')">Letal</button>
+    <button matTooltip="Puede atacar a contendientes preparados." (click)="anadirhabilidad('Precisión')">Precisión</button>
+    <button matTooltip="En combate realiza el ataque en primer lugar." (click)="anadirhabilidad('Primer Golpe')">Primer Golpe</button>
+    <button matTooltip="No sufre mareo de invocación." (click)="anadirhabilidad('Prisa')">Prisa</button>
+    <button matTooltip="Los contendientes enemigos en su zona deben atacar a este contendiente siempre aunque esté preparado." (click)="anadirhabilidad('Provocar')">Provocar</button>
+    <button matTooltip="Se puede jugar a velocidad de instantaneo." (click)="anadirhabilidad('Rápido')">Rápido</button>
+    <button matTooltip="No puede ser objetivo de tácticas ni habilidades" (click)="anadirhabilidad('Velo')">Velo</button>
+    <button matTooltip="Solo puede ser bloqueado por contendientes con Volar" (click)="anadirhabilidad('Volar')">Volar</button>
 </div>
         <textarea
           id="textarea"
@@ -256,7 +278,7 @@
         >
           <h5>
             {{ tipodecarta }}
-            <span *ngIf="tipodecarta === tiposdecarta[0]"
+            <span
               >: {{ subtipodecarta }}
             </span>
           </h5>

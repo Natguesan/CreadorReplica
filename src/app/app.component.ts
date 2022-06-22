@@ -22,8 +22,10 @@ export class AppComponent implements OnInit {
   imagencreada = "";
   tiposdecarta: Array<string> = ["Contendiente", "Táctica"];
   tipodecarta: string = "Contendiente";
-  subtiposdecarta: Array<string> = ["Pistolero", "Espadachín", "Hechicero", "Guerrero", "Mago", "Cazador", "Bestia", "Caballero", "Ladrón", "Místico","Adepto","Dama","Dragón","Asesino"];
+  subtiposdecarta: Array<string> = ["Adepto","Asesino","Bardo","Bestia","Bruja","Caballero","Caballero Dragón","Cazador","Corrupto","Dama","Demonio","Dragón","Druida","Espadachín","Explorador","Faxala","Forajido","Guardia","Guerrero","Hadraix","Hechicero","Ladrón","Luman","Mago","Mercader","Místico","Mooncat","Pistolero","Terpun","Vumdrak"];
   subtipodecarta: string = "";
+  subtiposdetactica: Array <string> = ["Apoyo","Hechizo","Militar","Subterfugio"];
+  subtipodetactica : string = "";
   filePath: string = "";
   myForm: FormGroup;
   textodeCarta: string = "";
@@ -120,46 +122,8 @@ this.textodeCarta = this.textodeCarta + "<b>";
     reader.readAsDataURL(file)
   }
   anadirhabilidad(hab : string) : void {
-    if (hab === 'Evasion'){
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #228b22 solid;border-radius:15px;background-color:white;font-weight:bold;color:#228b22;padding-right:1px;padding-left:1px'>Evasión</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Rapidez') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #E60026 solid;border-radius:15px;background-color:white;font-weight:bold;color:#E60026;padding-right:1px;padding-left:1px'>Rapidez</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Perforar') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #B87333 solid;border-radius:15px;background-color:white;font-weight:bold;color:#B87333;padding-right:1px;padding-left:1px'>Perforar</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'PrimerGolpe') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #FFA971 solid;border-radius:15px;background-color:white;font-weight:bold;color:#FFA971;padding-right:1px;padding-left:1px'>Primer Golpe</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Volar') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #0CB7F2 solid;border-radius:15px;background-color:white;font-weight:bold;color:#0CB7F2;padding-right:1px;padding-left:1px'>Volar</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Veloz') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #3EB489 solid;border-radius:15px;background-color:white;font-weight:bold;color:#3EB489;padding-right:1px;padding-left:1px'>Veloz</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'AntiHechizo') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #C6BD34 solid;border-radius:15px;background-color:white;font-weight:bold;color:#C6BD34;padding-right:1px;padding-left:1px'>Anti-Hechizo</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Regeneracion') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #900020 solid;border-radius:15px;background-color:white;font-weight:bold;color:#900020;padding-right:1px;padding-left:1px'>Regeneración</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Sigilo') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #7D2181 solid;border-radius:15px;background-color:white;font-weight:bold;color:#7D2181;padding-right:1px;padding-left:1px'>Sigilo</span>"
-      this.textoCarta(this.textodeCarta)
-    }
-    if (hab === 'Precision') {
-      this.textodeCarta = this.textodeCarta + "<span style='border:1.3px #EF7F1A solid;border-radius:15px;background-color:white;font-weight:bold;color:#EF7F1A;padding-right:1px;padding-left:1px'>Precisión</span>"
-      this.textoCarta(this.textodeCarta)
-    }
+    this.textodeCarta = this.textodeCarta + "<span style='border:1.3px black solid; border-radius:15px;background-color:white;font-weight:bold;color:black;padding-right:1px;padding-left:1px'>" + hab +"</span>"
+    this.textoCarta(this.textodeCarta)
 }
   
   textodelaCarta(e: string) {
