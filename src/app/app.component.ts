@@ -11,6 +11,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  yalmir : string = "../assets/imagenes/yalmir.png";
+  borcloy: string = "../assets/imagenes/borcloy.png";
+  rutghar: string = "../assets/imagenes/rutghar.png";
+  fenrir: string = "../assets/imagenes/fenrir.png";
+  uno : string = "../assets/imagenes/uno.png";
+  dos : string = "../assets/imagenes/2.png";
+  tres : string = "../assets/imagenes/3.png";
+  cuatro : string = "../assets/imagenes/4.png";
+  cinco : string = "../assets/imagenes/5.png";
+  seis : string = "../assets/imagenes/6.png";
+  
   title = 'creador';
   fondoimagen: string = "";
   casa: string = "Borcloy";
@@ -75,8 +86,8 @@ export class AppComponent implements OnInit {
 
   }
 comprobarnumero( e : number) : void{
-  if (e >= 100) {
-    this.numerocoleccion = 99
+  if (e >= 200) {
+    this.numerocoleccion = 199
   } else {
     this.numerocoleccion = e
   }
@@ -125,7 +136,14 @@ this.textodeCarta = this.textodeCarta + "<b>";
     this.textodeCarta = this.textodeCarta + "<span style='border:1.3px black solid; border-radius:15px;background-color:white;font-weight:bold;color:black;padding-right:1px;padding-left:1px'>" + hab +"</span>"
     this.textoCarta(this.textodeCarta)
 }
-  
+anadirAgotar() : void {
+  this.textodeCarta = this.textodeCarta + "<img src='../assets/imagenes/agotar.png' style='height:10px; widht:10px'>"
+  this.textoCarta(this.textodeCarta)
+}
+anadirCosteCasa(casa : string) : void {
+  this.textodeCarta = this.textodeCarta + "<img src='"+casa+"' style='height:10px; widht:10px'>"
+  this.textoCarta(this.textodeCarta)
+}  
   textodelaCarta(e: string) {
     console.log(e);
     let txt = $('#textodelacarta').html();//valor del div en texto.

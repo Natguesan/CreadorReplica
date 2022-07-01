@@ -158,7 +158,42 @@
  <mat-tab label="Textos"  >
   <div class="textos">
     <div class="toolbar">
+      <mat-form-field appearance="fill">
+        <mat-label>Coste Habilidad</mat-label>
+        <mat-select type="text">
+          <mat-option matTooltip="coste borcloy" (click)="anadirCosteCasa(borcloy)">
+          <img style= "height: 15px; width: 15px;"src="../assets/imagenes/borcloy.png">
+          </mat-option>
+          <mat-option matTooltip="coste fenrir" (click)="anadirCosteCasa(fenrir)">
+            <img style= "height: 15px; width: 15px;"src="../assets/imagenes/fenrir.png">
+          </mat-option>
+          <mat-option matTooltip="coste rutghar" (click)="anadirCosteCasa(rutghar)">
+            <img style= "height: 15px; width: 15px;"src="../assets/imagenes/rutghar.png">
+          </mat-option>
+          <mat-option matTooltip="coste yalmir" (click)="anadirCosteCasa(yalmir)">
+            <img style= "height: 15px; width: 15px;"src="../assets/imagenes/yalmir.png">
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(uno)">
+            1 Incoloro
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(dos)">
+            2 Incoloro
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(tres)">
+            3 Incoloro
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(cuatro)">
+            4 Incoloro
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(cinco)">
+            5 Incoloro
+          </mat-option>
+          <mat-option matTooltip="Coste Incoloro 1" (click)="anadirCosteCasa(seis)">
+            6 Incoloro
+          </mat-option>
+        </mat-select></mat-form-field>
     <button matTooltip="Para añadir Negrita al texto" (click)="anadirNegrita()"><b>b</b></button>
+    <button matTooltip="Indicador habilidad activa agotar" (click)="anadirAgotar()">Agotar</button>
     <button matTooltip="Ignora el primer daño recibido en cada turno." (click)="anadirhabilidad('Aguante')">Aguante</button>
     <button matTooltip="Si el contendiente tiene tiene más ataque que la resistencia del contendiente enemigo el daño restante pasa a puntos de conquista." (click)="anadirhabilidad('Arrollar')">Arrollar</button>
     <button matTooltip="Siempre que este contendiente derrote a otro contendiente si sobrevive obtiene +1/+1." (click)="anadirhabilidad('Coraje')">Coraje</button>
@@ -201,7 +236,7 @@
     </mat-select></mat-form-field> 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Número colección</mat-label>
-      <input matInput type="number" style="color: white" max="99" min="1" [ngModel]="numerocoleccion"
+      <input matInput type="number" style="color: white" max="199" min="1" [ngModel]="numerocoleccion"
       (ngModelChange)="comprobarnumero($event)">
     </mat-form-field>
   </div>
@@ -621,7 +656,7 @@
           <span class=""*ngIf="rareza === 'Legendaria'">LG</span>
         </div>
         <div *ngIf="tipodecarta === 'Contendiente'"class="letrararezacontendiente">
-          <span *ngIf="coleccion.siglas !==''">{{coleccion.siglas}}</span><span *ngIf="numerocoleccion > 0">-<span *ngIf=" 10 > numerocoleccion">0</span>{{numerocoleccion}}</span>
+          <span *ngIf="coleccion.siglas !==''">{{coleccion.siglas}}</span><span *ngIf="numerocoleccion > 0">-<span *ngIf=" 100 > numerocoleccion">0</span><span *ngIf=" 10 > numerocoleccion">0</span>{{numerocoleccion}}</span>
           <span class=""*ngIf="rareza === 'Común'">C</span>
           <span class=""*ngIf="rareza === 'Rara'">R</span>
           <span class=""*ngIf="rareza === 'Épica'">EP</span>
